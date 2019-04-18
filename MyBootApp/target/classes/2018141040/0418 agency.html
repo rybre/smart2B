@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>  
+body { background: #fff; }
+.bluetop {
+  border-collapse: collapse;
+  border-top: 3px solid #168;
+  border-bottom: 3px solid #168;
+}  
+.bluetop th {
+  color: #168;
+  background: #f0f6f9;
+}
+.bluetop th, .bluetop td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+.bluetop th:first-child, .bluetop td:first-child {
+  border-left: 0;
+}
+.bluetop th:last-child, .bluetop td:last-child {
+  border-right: 0;
+}
+
+</style>
+<script>
+function check_onclick(){
+	for(var i=0;i<document.form1.agree.length;i++){
+		document.form1.agree.elements[i].checked=true;	
+	}
+}
+
+function output(a)
+{	
+	
+		if(!a.id.value)
+		{
+				alert("이름을 입력하세요.");
+				a.id.focus();
+		}
+		else if (a.pnum.value == "")
+		{
+				alert("휴대전화 번호를 입력하세요.");
+				a.pnum.focus();
+		}
+		else if (a.pnum1.value == "")
+		{
+				alert("휴대전화 번호를 입력하세요.");
+				a.pnum1.focus();
+		}
+		else if (a.pnum2.value == "")
+		{
+				alert("휴대전화 번호를 입력하세요.");
+				a.pnum2.focus();
+		}
+		else if (!a.email.value)
+		{
+				alert("이메일을 입력해주세요.")
+				a.email.focus();
+		}
+		else if (!a.ad.value)
+		{
+				alert("주소를 입력해주세요.")
+				a.ad.focus();
+		}
+		else if (a.agree.value.checked=false)
+		{
+				alert("필수항목을 체크하세요.")
+		}
+		else a.submit();
+}
+
+</script>
+</head>
+<body>
+<form name="form1" action="Helo_result.jsp" method="post">
+
+<h5>지금 당장 신청하세요! 무료 사은품의 기회</h5>
+<table class="bluetop" border=1>
+<tr>
+<td>▶이름 :</td>
+<td><input type="text" name="id">▶실명(한글이름)</td>
+</tr>
+<tr>
+<td>▶핸드폰번호 : </td>
+<td><input type="text" name="pnum" size="2">-
+<input type="text" name="pnum1" size="4">-<input type="text" name="pnum2" size="4">
+</td>
+</tr>
+<tr>
+<td>▶통신사 : </td>
+<td><select id="select" name="agency">
+	<option value="KT">KT</option>
+	<option value="SKT">SKT</option>
+	<option value="LGU+">LGU+</option>
+	</select>
+</td>
+</tr>
+<tr>
+<td>성별 : </td>
+<td><input type="radio" name="sex" value="남자">남자
+<input type="radio" name="sex" value="여자" checked>여자
+</td>
+</tr>
+<tr><td>이메일 : </td>
+<td><input type="text" name="email" size=40>
+</td>
+</tr>
+
+<tr>
+<td>주소 : </td>
+<td><input type="text" name="ad" size=40>
+</td>
+</tr>
+<tr>
+<td>필수*<br>개인정보 이용동의 : </td>
+<td>
+<input type="checkbox" name="agree" value="개인정보 수집 및 이용 동의">개인정보 수집 및 이용 동의
+<input type="checkbox" name="agree" value="사은품 발송을 위한 주소 이용동의">사은품 발송을 위한 주소 이용동의<br>
+<input type="checkbox" name="agree" value="제 3자 개인정보 이용동의">제 3자 개인정보 이용동의(선택)
+<input type="checkbox" value="agree_all" onclick=check_onclick()>모두 동의<br>
+</td>
+</tr>
+</table>
+<input type="button" value="제출" onclick="output(form1)">
+<input type="reset" value="취소">
+</form>
+
+</body>
+</html>
